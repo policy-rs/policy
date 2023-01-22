@@ -55,7 +55,7 @@ mod error;
 /// TODO: SecurityPolicy
 #[allow(non_snake_case)]
 #[non_exhaustive]
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct SecurityPolicy {
     /// v - SemVer version
     pub(crate) v: semver::Version,
@@ -77,15 +77,42 @@ impl SecurityPolicy {
 
 /// Error for Security Policy
 #[non_exhaustive]
+#[derive(Debug, PartialEq, Clone)]
 pub enum SecurityPolicyError {
     /// Regex fails to match the policy - in future nom used
-    NoMatch,
+    InvalidVersion,
+    /// TODO: Get rid of this thing.
+    Unknown,
 }
 
 impl TryFrom<&str> for SecurityPolicy {
     type Error = SecurityPolicyError;
     
     fn try_from(policy_str: &str) -> Result<Self, Self::Error> {
-        Err(SecurityPolicyError::NoMatch)
+        Err(SecurityPolicyError::Unknown)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use rstest::rstest;
+    
+    #[rstest]
+    #[case("v=0.1.0", None)]
+    #[case("v=0.1000.0", Some(SecurityPolicyError::InvalidVersion))]
+    #[case("v=0.-1.0", Some(SecurityPolicyError::InvalidVersion))]
+    fn version(#[case] v_str: &str, #[case] err: Option<SecurityPolicyError>) {
+        let policy: Result<SecurityPolicy, SecurityPolicyError> = v_str.try_into();
+
+        match policy {
+            Err(e) => {
+                assert_eq!(Some(e), err);
+            },
+            Ok(p) => {
+                assert_eq!(err, None);
+            },
+        }
+
     }
 }

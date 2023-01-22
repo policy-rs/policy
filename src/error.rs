@@ -52,7 +52,7 @@ impl Debug for Error {
         f.write_str("policy::Error { source: ")?;
 
         if let Some(source) = &self.source {
-            write!(f, "Some({})", source)?;
+            write!(f, "Some({source})")?;
         } else {
             f.write_str("None")?;
         }
@@ -68,7 +68,7 @@ impl Display for Error {
         #[cfg(feature = "std")]
         {
             if let Some(source) = &self.source {
-                write!(f, ": {}", source)?;
+                write!(f, ": {source}")?;
             }
         }
 

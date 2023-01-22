@@ -36,3 +36,6 @@ semver = { version = "1.0", default-features = false }
 safe-regex = { version = "0.2", default-features = false }
 #TODO: do this proper and allow quoted " perhaps?
 #nom = { version = "7.1", default-features = false }
+
+[dev-dependencies]
+rstest = "0.16"

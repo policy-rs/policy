@@ -7,7 +7,7 @@
 //! Probably going to choose B.
 
 /// E-Mail address as specified in RFC 5322, and RFC 6532
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct EmailAddress {
 }
 
