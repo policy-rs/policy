@@ -28,6 +28,19 @@ extern crate alloc;
 #[allow(unused_imports)]
 #[macro_use]
 extern crate heapless;
+
+use core::fmt;
+impl fmt::Debug for X
+   fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("X")
+            .field("x", self.r_bytes())
+            .finish()
+    }
+impl fmt::Display for X {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{:X}", self)
+    }
+}
 */
 
 // SemVer reflecting Source of Truth
