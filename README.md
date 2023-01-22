@@ -21,7 +21,10 @@ The PolicyCode framework is inspired by:
 
 ## PolicyCode Parsing 0.1.0
 
-K/V Assignments A=foo, A=foo+bar, A=foo%20bar (RFC 3986), A="url" (RFC 1738), A=TIMEexp
+- This must be able to be embedded inside ""'s
+- UTF-8 with " (d'34) character reserved - no quoting supported
+
+K/V Assignments A=foo, A=foo+bar, A=foo%20bar (RFC 3986), A=url (RFC 1738), A=TIMEexp
 ```regex
 ^([a-zA-Z0-9]+)=([^\s]+|\"([^\"]+\")$
 ```
