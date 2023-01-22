@@ -32,7 +32,6 @@ jobs:
           toolchain: stable
           targets: thumbv7em-none-eabi
       - run: cargo build --target thumbv7em-none-eabi --lib --release --no-default-features --features security
-      - run: cargo build --target thumbv7em-none-eabi --lib --release --features security
 
   nightly:
     name: Test nightly compiler
