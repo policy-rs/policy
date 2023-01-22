@@ -12,21 +12,15 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - os: [ubuntu-latest]
-          - os: [windows-latest]
-          - os: [macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
-      - run: rustup target add ${{ matrix.target }}
-      - run: ${{ matrix.deps }}
-      - run: cargo test --target ${{ matrix.target }} --no-default-features
-      - run: cargo test --target ${{ matrix.target }}
+      - run: cargo test --no-default-features
+      - run: cargo test
 
   build-nostd:
     name: Build on no_std target (thumbv7em-none-eabi)
