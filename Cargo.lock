@@ -133,6 +133,7 @@ version = "0.0.0-202301.Jan.22"
 dependencies = [
  "rstest",
  "safe-regex",
+ "semver",
 ]
 
 [[package]]

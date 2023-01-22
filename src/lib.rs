@@ -45,8 +45,7 @@ mod email;
 pub use email::EmailAddress;
 
 /// Re-Export SemVer reflecting Source of Truth
-mod semver;
-pub use crate::semver::SemVer;
+pub use semver;
 
 mod error;
 
@@ -56,7 +55,7 @@ mod error;
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct SecurityPolicy {
     /// v - Policy SemVer version
-    pub(crate) v: SemVer,
+    pub(crate) v: semver::Version,
     /// E - Email-address - RFC 5322, and RFC 6532
     pub(crate) E: EmailAddress,
 }
@@ -64,7 +63,7 @@ pub struct SecurityPolicy {
 #[allow(non_snake_case)]
 impl SecurityPolicy {
     /// v - version - from [`crate::SemVer`]
-    pub fn v(&self) -> SemVer {
+    pub fn v(&self) -> semver::Version {
         self.v.clone()
     }
     /// E - email - from [`crate::EmailAddress`]
