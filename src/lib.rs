@@ -43,11 +43,49 @@ impl fmt::Display for X {
 }
 */
 
-// SemVer reflecting Source of Truth
+mod email;
+/// RFC 5322, and RFC 6532
+pub use email::EmailAddress;
+
+/// Re-Export SemVer reflecting Source of Truth
 pub use semver;
 
+mod error;
+
 /// TODO: SecurityPolicy
+#[allow(non_snake_case)]
+#[non_exhaustive]
+#[derive(Clone, Eq, PartialEq)]
 pub struct SecurityPolicy {
-    /// SemVer version
-    pub version: semver::Version,
+    /// v - SemVer version
+    pub(crate) v: semver::Version,
+    /// E - Email-address - RFC 5322, and RFC 6532
+    pub(crate) E: EmailAddress,
+}
+
+#[allow(non_snake_case)]
+impl SecurityPolicy {
+    /// v - version - from [`semver::Version`]
+    pub fn v(&self) -> semver::Version {
+        self.v.clone()
+    }
+    /// E - email - from [`EmailAddress`]
+    pub fn E(&self) -> EmailAddress {
+        self.E.clone()
+    }    
+}
+
+/// Error for Security Policy
+#[non_exhaustive]
+pub enum SecurityPolicyError {
+    /// Regex fails to match the policy - in future nom used
+    NoMatch,
+}
+
+impl TryFrom<&str> for SecurityPolicy {
+    type Error = SecurityPolicyError;
+    
+    fn try_from(policy_str: &str) -> Result<Self, Self::Error> {
+        Err(SecurityPolicyError::NoMatch)
+    }
 }

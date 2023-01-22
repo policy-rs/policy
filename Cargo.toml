@@ -15,6 +15,9 @@ keywords = ["policy"]
 [features]
 default = ["std"]
 std = ["semver/std"]
+#TODO: serde!
+#TODO: nom
+#std = ["semver/std", "nom/std"]
 
 [package.metadata.docs.rs]
 features = []
@@ -31,3 +34,5 @@ semver = { version = "1.0", default-features = false }
 #[target.'cfg(not(feature = "std"))'.dependencies]
 # For now just use safe-regex that doesn't insist on std
 safe-regex = { version = "0.2", default-features = false }
+#TODO: do this proper and allow quoted " perhaps?
+#nom = { version = "7.1", default-features = false }
