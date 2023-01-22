@@ -1,0 +1,21 @@
+[package]
+name = "policy"
+version = "0.0.0-202301.Jan.22"
+edition = "2021"
+rust-version = "1.60.0"
+authors = ["pinkforest"]
+description = "Rust Policy Framework"
+license = "Apache-2.0/MIT"
+readme = "README.md"
+homepage = "https://github/policy-rs/policy"
+repository = "https://github/policy-rs/policy"
+documentation = "https://docs.rs/policy"
+keywords = ["policy"]
+
+[features]
+
+[package.metadata.docs.rs]
+features = []
+rustdoc-args = ["--cfg", "docsrs"]
+
+[dependencies]
