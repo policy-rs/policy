@@ -28,3 +28,9 @@ name = "security_basic"
 path = "fuzz_targets/security_basic.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "email_basic"
+path = "fuzz_targets/email_basic.rs"
+test = false
+doc = false

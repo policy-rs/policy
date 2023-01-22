@@ -30,7 +30,7 @@ mod email;
 
 /// RFC 5322, and RFC 6532
 #[cfg(feature = "email")]
-pub use email::EmailAddress;
+pub use email::{EmailAddress, EmailAddressError};
 
 /// Re-Export SemVer reflecting Source of Truth
 #[cfg(feature = "semver")]

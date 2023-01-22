@@ -15,10 +15,13 @@ pub struct EmailAddress<'a> {
 
 impl<'a> EmailAddress<'a> {}
 
+/// Email Address Errors
 #[non_exhaustive]
 #[derive(Debug, PartialEq, Clone)]
 pub enum EmailAddressError {
+    /// TODO: This is not implemented
     NotImplemented,
+    /// E-Mail address is Invalid
     Invalid,
 }
 
