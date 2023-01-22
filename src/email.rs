@@ -8,15 +8,11 @@
 
 /// E-Mail address as specified in RFC 5322, and RFC 6532
 #[derive(Debug, Clone, Eq, PartialEq)]
-pub struct EmailAddress {
-}
+pub struct EmailAddress {}
 
-impl EmailAddress {
-}
+impl EmailAddress {}
 
 #[cfg(test)]
 mod test {
     use super::*;
-
-    
 }

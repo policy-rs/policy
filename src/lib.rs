@@ -2,10 +2,7 @@
 #![forbid(unsafe_code)]
 #![cfg_attr(docsrs, feature(doc_auto_cfg, doc_cfg, doc_cfg_hide))]
 #![cfg_attr(docsrs, doc(cfg_hide(docsrs)))]
-#![deny(
-    clippy::unwrap_used,
-    missing_docs
-)]
+#![deny(clippy::unwrap_used, missing_docs)]
 #![warn(
     clippy::unwrap_used,
     rust_2018_idioms,
@@ -73,7 +70,7 @@ impl SecurityPolicy {
     /// E - email - from [`crate::EmailAddress`]
     pub fn E(&self) -> EmailAddress {
         self.E.clone()
-    }    
+    }
 }
 
 /// Error for Security Policy
@@ -88,7 +85,7 @@ pub enum SecurityPolicyError {
 
 impl TryFrom<&str> for SecurityPolicy {
     type Error = SecurityPolicyError;
-    
+
     fn try_from(policy_str: &str) -> Result<Self, Self::Error> {
         Err(SecurityPolicyError::Unknown)
     }
@@ -98,7 +95,7 @@ impl TryFrom<&str> for SecurityPolicy {
 mod test {
     use super::*;
     use rstest::rstest;
-    
+
     #[rstest]
     #[case("v=0.1.0", None)]
     #[case("v=0.1000.0", Some(SecurityPolicyError::InvalidVersion))]
@@ -109,10 +106,10 @@ mod test {
         match policy {
             Err(e) => {
                 assert_eq!(Some(e), err);
-            },
+            }
             Ok(p) => {
                 assert_eq!(err, None);
-            },
+            }
         }
     }
 }
