@@ -13,6 +13,7 @@ documentation = "https://docs.rs/policy"
 keywords = ["policy"]
 
 [features]
+default = ["std"]
 std = ["semver/std"]
 
 [package.metadata.docs.rs]
@@ -21,4 +22,3 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 semver = { version = "1.0", default-features = false }
-
