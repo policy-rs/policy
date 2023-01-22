@@ -44,4 +44,4 @@ mod policy;
 
 /// SecurityPolicy
 #[cfg(feature = "security")]
-pub use policy::security::SecurityPolicy;
+pub use policy::security::{SecurityPolicy, SecurityPolicyError};
