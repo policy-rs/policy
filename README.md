@@ -5,19 +5,11 @@ The PolicyCode framework is inspired by:
 - https://en.wikipedia.org/wiki/Geek_Code
 - https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
 
+Rust SecurityPolicy is specified and implemented first.
+
 ## PolicyCode Philosophy
 
-- KISS - Keep it Super Simple and keep making it simpler (as possible)
-- a single line and short as possible
-- Source of Truth is implemented in Code in this repository
-- Express the specifics in the code and leave the high level in spec
-- Use new alphanumerics if the existing meaning changes
-- Alphanumeric can be either Value Assignment OR Self-Expression
-- No specs for anything that is not needed Now(tm)
-- Don't be afraid of breaking changes and use SemVer
-- Don't be afraid of the Regex - be expressive with it - less words more regex
-- Make something up in the meanwhile - rather than analysis-paralysis
-- Don't sweat it.
+See [POLICY.md](POLICY.md)
 
 ## PolicyCode Parsing 0.1.0
 
@@ -60,6 +52,5 @@ The initial need was to develop a PolicyCode for security policies.
 | PuBP="url" | 0.1.0   | Public bountry program                        |
 | PrBP="url" | 0.1.0   | Private bounty program                        |
 | Ap=TIME    | 0.1.0   | Advance Private Disclosure program            |
-
 
 [Full disclosure]: https://en.wikipedia.org/wiki/Full_disclosure_(computer_security)
