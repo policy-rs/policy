@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo test --lib --no-default-features
-      - run: cargo test
+      - run: cargo test --lib --no-default-features --features security
+      - run: cargo test --features security
 
   build-nostd:
     name: Build on no_std target (thumbv7em-none-eabi)
@@ -31,8 +31,8 @@ jobs:
         with:
           toolchain: stable
           targets: thumbv7em-none-eabi
-      - run: cargo build --target thumbv7em-none-eabi --lib --release --no-default-features
-      - run: cargo build --target thumbv7em-none-eabi --lib --release
+      - run: cargo build --target thumbv7em-none-eabi --lib --release --no-default-features --features security
+      - run: cargo build --target thumbv7em-none-eabi --lib --release --features security
 
   nightly:
     name: Test nightly compiler
@@ -40,7 +40,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: dtolnay/rust-toolchain@nightly
-    - run: cargo test
+    - run: cargo test --all-features
 
   clippy:
     name: Check that clippy is happy
@@ -70,11 +70,11 @@ jobs:
     # First run `cargo +nightly -Z minimal-verisons check` in order to get a
     # Cargo.lock with the oldest possible deps
     - uses: dtolnay/rust-toolchain@nightly
-    - run: cargo -Z minimal-versions check --no-default-features --lib
+    - run: cargo -Z minimal-versions check --no-default-features --features security --lib
     # Now check that `cargo build` works with respect to the oldest possible
     # deps and the stated MSRV
     - uses: dtolnay/rust-toolchain@1.60.0
-    - run: cargo build --no-default-features --lib
+    - run: cargo build --no-default-features --features security --lib
 
   bench:
     name: Check that benchmarks compile

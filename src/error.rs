@@ -9,6 +9,7 @@ use std::boxed::Box;
 /// Result type.
 ///
 /// A result with the `policy` crate's [`Error`] type.
+#[allow(dead_code)]
 pub type Result<T> = core::result::Result<T, Error>;
 
 #[derive(Default)]
@@ -21,6 +22,7 @@ pub struct Error {
 
 impl Error {
     /// Create a new error with no associated source
+    #[allow(dead_code)]
     pub fn new() -> Self {
         Self::default()
     }

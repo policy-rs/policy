@@ -14,7 +14,12 @@ keywords = ["policy"]
 
 [features]
 default = ["std"]
-std = []
+# email type
+email = []
+std = ["semver?/std"]
+# Security Policy
+security = ["dep:semver", "dep:safe-regex", "email"]
+semver = ["dep:semver"]
 #TODO: semver isn't std friendly ?
 #TODO: serde!+/std
 #TODO: nom+/std
@@ -24,7 +29,7 @@ features = []
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-semver = { version = "1.0", default-features = false }
+semver = { version = "1.0", optional = true, default-features = false }
 # TODO: This is a mess still -
 #  Make portable no_std/std regex off-crate that
 # https://github.com/rust-lang/regex/issues/476
@@ -32,7 +37,7 @@ semver = { version = "1.0", default-features = false }
 #[target.'cfg(feature = "std")'.dependencies]
 #regex = { version = "1.7", default-features = false, features = ["std"] }
 #[target.'cfg(not(feature = "std"))'.dependencies]
-safe-regex = { version = "0.2", default-features = false }
+safe-regex = { version = "0.2", optional = true, default-features = false }
 # TODO: when we grow up let's nom:
 #nom = { version = "7.1", default-features = false }
 

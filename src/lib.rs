@@ -25,11 +25,15 @@ mod error;
 // Types / Re-Exports
 //------------------------------------------------------------------------
 
+#[cfg(feature = "email")]
 mod email;
+
 /// RFC 5322, and RFC 6532
+#[cfg(feature = "email")]
 pub use email::EmailAddress;
 
 /// Re-Export SemVer reflecting Source of Truth
+#[cfg(feature = "semver")]
 pub use semver;
 
 //------------------------------------------------------------------------
@@ -39,4 +43,5 @@ pub use semver;
 mod policy;
 
 /// SecurityPolicy
+#[cfg(feature = "security")]
 pub use policy::security::SecurityPolicy;
