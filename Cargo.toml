@@ -32,8 +32,8 @@ rustdoc-args = ["--cfg", "docsrs"]
 #[target.'cfg(feature = "std")'.dependencies]
 #regex = { version = "1.7", default-features = false, features = ["std"] }
 #[target.'cfg(not(feature = "std"))'.dependencies]
-# safe-regex no_std is broken and it's Apache 2.0 only
 safe-regex = { version = "0.2", default-features = false }
+# TODO: when we grow up let's nom:
 #nom = { version = "7.1", default-features = false }
 
 [dev-dependencies]
