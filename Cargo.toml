@@ -14,17 +14,17 @@ keywords = ["policy"]
 
 [features]
 default = ["std"]
-std = ["semver/std"]
-#TODO: serde!
-#TODO: nom
-#std = ["semver/std", "nom/std"]
+std = []
+#TODO: semver isn't std friendly ?
+#TODO: serde!+/std
+#TODO: nom+/std
 
 [package.metadata.docs.rs]
 features = []
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-semver = { version = "1.0", default-features = false }
+#semver = { version = "1.0", default-features = false }
 # TODO: This is a mess still -
 #  Make portable no_std/std regex off-crate that
 # https://github.com/rust-lang/regex/issues/476
@@ -32,9 +32,8 @@ semver = { version = "1.0", default-features = false }
 #[target.'cfg(feature = "std")'.dependencies]
 #regex = { version = "1.7", default-features = false, features = ["std"] }
 #[target.'cfg(not(feature = "std"))'.dependencies]
-# For now just use safe-regex that doesn't insist on std
+# safe-regex no_std is broken and it's Apache 2.0 only
 safe-regex = { version = "0.2", default-features = false }
-#TODO: do this proper and allow quoted " perhaps?
 #nom = { version = "7.1", default-features = false }
 
 [dev-dependencies]
