@@ -72,7 +72,7 @@ jobs:
     - run: cargo -Z minimal-versions check --no-default-features --features security --lib
     # Now check that `cargo build` works with respect to the oldest possible
     # deps and the stated MSRV
-    - uses: dtolnay/rust-toolchain@1.60.0
+    - uses: dtolnay/rust-toolchain@1.70.0
     - run: cargo build --no-default-features --features security --lib
 
   bench:
