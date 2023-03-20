@@ -42,4 +42,4 @@ safe-regex = { version = "0.2", optional = true, default-features = false }
 #nom = { version = "7.1", default-features = false }
 
 [dev-dependencies]
-rstest = "0.16"
+rstest = "0.17"
